@@ -31,9 +31,7 @@ public class TimeEntryControllerTest {
     public void testCreate() throws Exception {
         TimeEntry timeEntryToCreate = new TimeEntry(123L, 456L, LocalDate.parse("2017-01-08"), 8);
         TimeEntry expectedResult = new TimeEntry(1L, 123L, 456L, LocalDate.parse("2017-01-08"), 8);
-        doReturn(expectedResult)
-            .when(timeEntryRepository)
-            .create(any(TimeEntry.class));
+        doReturn(expectedResult).when(timeEntryRepository).create(any(TimeEntry.class));
 
 
         ResponseEntity response = controller.create(timeEntryToCreate);
