@@ -61,6 +61,9 @@ jobs:
   plan:
   - get: pal-tracker
     passed: [build]
+  - get: pal-tracker-artifacts
+    trigger: true
+    passed: [build]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
     params:
@@ -83,6 +86,8 @@ jobs:
 - name: deploy-production
   plan:
   - get: pal-tracker
+    passed: [deploy-review]
+  - get: pal-tracker-artifacts
     passed: [deploy-review]
   - task: migrate database
     file: pal-tracker/ci/migrateDatabase.yml
