@@ -53,6 +53,7 @@ public class TimeEntry {
         if (hours != timeEntry.hours) return false;
         return date != null ? date.equals(timeEntry.date) : timeEntry.date == null;
     }
+
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
